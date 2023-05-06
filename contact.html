@@ -39,7 +39,7 @@
    <!-- end loader -->
    <div class="full_bg">
       <!-- header -->
-      <header class="header-area">
+       <header class="header-area">
          <div class="container-fluid">
             <div class="row d_flex">
                <div class=" col-md-3 col-sm-3">
@@ -54,7 +54,7 @@
                            <li><a href="index.html">Home</a></li>
                            <li><a href="about.html">About</a></li>
                            <li><a href="services.html">Services</a></li>
-                           
+                           <li><a href="testimonial.html">Testimonial</a></li>
                            <li><a class="active" href="contact.html">Contact Us</a></li>
                         </ul>
                         <button class="nav-toggler">
@@ -67,34 +67,115 @@
             </div>
          </div>
       </header>
-      <!-- end header inner -->
-   </div>
-   </div>
-   <!-- contact -->
-   <div class="contact">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 ">
-               <div class="titlepage text_align_center">
-                  <h2>Get In Touch</h2>
-               </div>
-            </div>
-         </div>
+      <div id="chat-log"></div>
+<div class="user-input-container">
+   <input type="text" id="user-input" placeholder="Type your message...">
+   <button onclick="sendMessage()">Send</button>
+</div>
+<script>
+   function sendMessage() {
+      var userInput = document.getElementById("user-input");
+      var message = userInput.value.trim();
+     
+      if (message !== "") {
+        var chatLog = document.getElementById("chat-log");
+     
+        // Create a new message bubble
+        var messageBubble = document.createElement("div");
+        messageBubble.className = "message-bubble";
+        messageBubble.innerHTML = "<span class='user-message'>" + message + "</span>";
+        chatLog.appendChild(messageBubble);
+     
+        // Clear the user input
+        userInput.value = "";
+     
+        // Scroll to the bottom of the chat log
+        chatLog.scrollTop = chatLog.scrollHeight;
         
-            <div class="col-md-4 offset-md-1">
-               <ul class="top_infomation">
-                  <li><a href="javascript:void(0)"><i><img src="images/call.png" alt="#" /></i>
-                        <p><span>Phone Number :</span> <br>+91 9717624097</p>
-                     </a></li>
-                  <li><a href="javascript:void(0)"><i><img src="images/mail.png" alt="#" /></i>
-                        <p><span>Email :</span> <br>tricksters167@gmail.com</p>
-                     </a></li>
-               </ul>
-               <p class="hey">IF YOU WHEN A GET IN TOUCH EMAIL US AT</p>
-            </div>
-         </div>
-      </div>
-   </div>
+        // Process the user message
+        processUserMessage(message);
+      }
+   }
+   
+   function processUserMessage(message) {
+      var response;
+   
+      if (message.toLowerCase().includes("hi") || message.toLowerCase().includes("hello")) {
+         response = "Hi! How can I help you?";
+      } else if (message.toLowerCase("").includes("issue") && message.toLowerCase().includes("website")) {
+         response = "If you are facing any issues with the website, please send an email to tricksters167@gmail.com for assistance.";
+      } else if (message.toLowerCase("").includes("issue") && message.toLowerCase().includes("download link")) {
+         response = "If you are having issues with the download link, please send an email to tricksters167@gmail.com for further support.";
+      } else {
+         response = "I'm sorry, I couldn't understand your request. Please choose one of the available options.";
+      }
+   
+      // Create a new message bubble for the chat bot's response
+      var chatLog = document.getElementById("chat-log");
+      var messageBubble = document.createElement("div");
+      messageBubble.className = "message-bubble";
+      messageBubble.innerHTML = "<span class='bot-message'>" + response + "</span>";
+      chatLog.appendChild(messageBubble);
+   }
+</script>
+
+   <style>
+     
+   
+      .container {
+         max-width: 400px;
+         margin: 0 auto;
+         padding: 20px;
+         border-radius: 50px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .message-bubble {
+         margin-bottom: 10px;
+         display: flex;
+         align-items: center;
+      }
+
+      .user-message {
+         background-color: #e6f2ff;
+         padding: 10px;
+         border-radius: 10px 10px 10px 0;
+         margin-right: 10px;
+      }
+
+      .bot-message {
+         background-color: #f0f0f0;
+         padding: 10px;
+         border-radius: 10px 10px 0 10px;
+         margin-left: 10px;
+      }
+
+      .user-input-container {
+         margin-top: 20px;
+         display: flex;
+         align-items: center;
+         height: 300px;
+      }
+
+      .user-input-container input[type="text"] {
+         flex: 1;
+         padding: 10px;
+         box-sizing: border-box;
+         border: 1px solid #ccc;
+         border-radius: 10px;
+      }
+
+      .user-input-container button {
+         background-color: #539165;
+         border: none;
+         color: #fff;
+         padding: 10px;
+         font-size: 1em;
+         margin-left: 10px;
+         border-radius: 10px;
+         cursor: pointer;
+      }
+   </style>
    <!-- end contact -->
    <!-- end footer -->
    <footer>
